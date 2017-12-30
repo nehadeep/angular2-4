@@ -1,0 +1,272 @@
+<app-admin-navigation></app-admin-navigation>
+<br /><br /><br /><br />
+
+<div class="bts-hz-admin-edit-UO">
+    <div class="container fv-form fv-form-skeleton">
+        <div class="row">
+            <div class="seven columns">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="five columns">
+
+                <div class="five columns">
+                    <button type="button" class="bts-tertiary-button u-pull-right bts-hz-button">Standard Form</button>
+                </div>
+                <div class="six columns">
+                    <button class="bts-tertiary-button  u-pull-right bts-hz-button">GL AU Order Form</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+   <br /><br/>
+        <form class="fv-form-horizontal fv-form fv-form-skeleton" [formGroup]="form">
+            <div class="container">
+
+                <div class="row">
+                    <div class="six columns">
+                        <div class="row">
+                            <label class="four columns">Universal Order ID:</label>
+                            <div class="seven columns">
+                                <span class="bts-hz-read-only-Id"> <input name="UniversalOrderID" class="u-full-width" type="text"  [readonly]="true"></span>
+
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">order Date:*</label>
+                            <div class="seven columns search-icon-container">
+                                
+                            </div>
+                        </div>
+                        <div class="row form-field-ctrl">
+                            <label for="manager" class="four columns" required>Manager:*</label>
+                            <div class="seven columns" [ngClass]="displayFieldCss('manager')">
+                                <ng2-completer formControlName="manager" class="u-full-width" [(ngModel)]="displayEditUoNewModel.mgr_Id" [datasource]="getManagersNameDataService" [minSearchLength]="0" 
+                                   (selected)="_editUONewRequestModel.mgr_Id=getNg2Val($event,'managerId')"></ng2-completer>
+                                <app-field-error-display [displayError]="isFieldValid('manager')" errorMsg="Please inform your Manger name"></app-field-error-display>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">blank:*</label>
+                            <div class="seven columns">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="six columns">
+                        <div class="row form-field-ctrl">
+                            <label class="four columns" for="websRegion" required>WEBS REGION:*</label>
+                            <div class="seven columns">
+                                <ng2-completer formControlName="websRegion" class="u-full-width" [ngClass]="displayFieldCss('websRegion')"  [(ngModel)]="displayEditUoNewModel.webs_Regn_Cd" [datasource]="getWebsRegionService" [minSearchLength]="0" (selected)="_editUONewRequestModel.webs_Regn_Cd=getNg2Val($event,'websRegionCode')" openOnClick="true" required></ng2-completer>
+                                 <app-field-error-display [displayError]="isFieldValid('websRegion')" errorMsg="Required"></app-field-error-display>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns" for="orderStatus" required>
+                                Order Status:*
+                            </label>
+                            <div class="seven columns">
+                                <ng2-completer formControlName="orderStatus" class="u-full-width" [ngClass]="displayFieldCss('orderStatus')"  [(ngModel)]="displayEditUoNewModel.univ_Ord_Stat" [datasource]="getOrderStatusDataService" [minSearchLength]="0" (selected)="_editUONewRequestModel.univ_Ord_Stat=getNg2Val($event,'code')"></ng2-completer>
+                             <app-field-error-display [displayError]="isFieldValid('orderStatus')" errorMsg="Required"></app-field-error-display>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="four columns">Completion Date:*</label>
+                            <div class="seven columns search-icon-container">
+                              
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns" for="AFSSystem">AFS System:*</label>
+                            <div class="seven columns">
+                                <ng2-completer formControlName="AFSSystem" class="u-full-width" [ngClass]="displayFieldCss('AFSSystem')" [(ngModel)]="displayEditUoNewModel.afs_Flg" [datasource]="getAFS_System" [minSearchLength]="0" (selected)="_editUONewRequestModel.afs_Flg=getNg2Val($event,'code')"></ng2-completer>
+                            <app-field-error-display [displayError]="isFieldValid('AFSSystem')" errorMsg="Required"></app-field-error-display>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                </div>
+
+            </div>
+            <br /><br /><br />
+            <div class="container">
+                <div class="row">
+                    <div class="six columns">
+                        <div class="row">
+                            <label class="four columns offset-by-three">CURRENT</label>
+
+                        </div>
+                    </div>
+                    <div class="six columns">
+                        <div class="row">
+                            <label class="four columns offset-by-three">PLANNED</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="margin-top:-20px;"> <hr /></div>
+
+         <!--    <div class="container">
+
+                <div class="row">
+                    <div class="six columns">
+                        <div class="row">
+                            <label class="four columns">Closure Event ID:</label>
+                            <div class="seven columns search-icon-container">
+                                <input name="ClosureEventID" class="u-full-width"  [(ngModel)]="displayEditUoNewModel.clsr_Evnt_Id" type="text" maxlength="50"><span class="searchIcon"><mat-icon svgIcon="obvc:search"></mat-icon></span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Event Reason:</label>
+                            <div class="seven columns">
+                                <input name="eventReason" class="u-full-width" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">GL AU:</label>
+                            <div class="seven columns">
+                                <input name="glAu" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">MAC Code:</label>
+                            <div class="seven columns">
+                                <input name="MACCode" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">HR Facility Code:</label>
+                            <div class="seven columns">
+                                <input name="HRFacilityCode" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Outlet Name:</label>
+                            <div class="seven columns">
+                                <input name="OutletName" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Format:</label>
+                            <div class="seven columns">
+                                <input name="Format" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Address:</label>
+                            <div class="seven columns"> 
+                                <input name="Address"  [(ngModel)]="displayEditUoNewModel.str_Site_Addr" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">City, State, ZIP:</label>
+                            <div class="seven columns">
+                                <input name="CityStateZIP" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="six columns">
+                        <div class="row">
+                            <label class="four columns">New Open Event ID:</label>
+                            <div class="seven columns search-icon-container">
+                                <input name="NewOpenEventID" class="u-full-width" type="text" maxlength="50" [(ngModel)]="displayEditUoNewModel.newOpn_Evnt_Id"> <span class="searchIcon"><mat-icon svgIcon="obvc:search"></mat-icon></span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Event Reason:</label>
+                            <div class="seven columns">
+                                <input name="eventReason" class="u-full-width" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">GL AU:</label>
+                            <div class="seven columns">
+                                <input name="glAu" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">MAC Code:</label>
+                            <div class="seven columns">
+                                <input name="MACCode" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">HR Facility Code:</label>
+                            <div class="seven columns">
+                                <input name="HRFacilityCode" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Outlet Name:</label>
+                            <div class="seven columns">
+                                <input name="OutletName" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Format:</label>
+                            <div class="seven columns">
+                                <input name="Format" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">Address:</label>
+                            <div class="seven columns">
+                                <input name="Address" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="four columns">City, State, ZIP:</label>
+                            <div class="seven columns">
+                                <input name="CityStateZIP" class="u-full-width" type="text">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
+ -->
+            <div class="container"> <hr /></div>
+
+            <div class="container fv-form fv-form-skeleton">
+                <div class="row">
+                    <div class="six columns">
+                        <div class="row">
+                            <div class="three columns">  <button type="button" class="bts-tertiary-button  u-pull-left bts-hz-button">Cancel</button></div>
+                        </div>
+                    </div>
+                    <div class="six columns">
+                        <div class="row">
+                            <div class="three columns offset-by-nine">
+                                <button class="bts-default-button  u-pull-right bts-hz-button" (click)="saveUniversalSearchData($event)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
