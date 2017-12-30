@@ -1,0 +1,16 @@
+
+.main-common-icons{
+	position: relative;
+}
+.main-common-icons .common-icons{
+     position: absolute;
+    bottom: 19px;
+    right: -94px;
+    width: 35px;
+    height: 31px;
+    background-color: blue;
+}  
+.main-common-icons .common-icons>i {
+	color: #fff;
+	
+}

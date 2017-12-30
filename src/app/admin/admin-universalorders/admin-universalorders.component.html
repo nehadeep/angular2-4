@@ -1,0 +1,64 @@
+
+<app-admin-navigation></app-admin-navigation><br><br><br/>
+
+<div class="admin-universalorder-form">
+<div class="container">
+
+<div class="row">
+<div class="six columns">
+<div class="row">
+<label class="seven columns">Universal Order ID</label>
+<div class="three columns"><ng2-completer name="universalOrderID" [(ngModel)]="uniOdrData.universalOrderID" [datasource]="uniOdrDtaService" [minSearchLength]="0" (Selected)= "onSelectCaptureFieldValue($event)"> </ng2-completer> </div>
+
+</div>
+<div class="row">
+<label class="seven columns">Current Event ID</label>
+<div class="three columns main-common-icons"><input type="text" name="currentEventID" [(ngModel)]="uniOdrData.currentEvtId" #currentEvtId="ngModel"/><span class="common-icons"><i class="material-icons">search</i></span></div>
+
+</div>
+<div class="row">
+<label class="seven columns">Planned Event ID</label>
+<div class="three columns main-common-icons"><input type="text" name="plannedEventID" [(ngModel)]="uniOdrData.plannedEvtId" #plannedEvtId="ngModel"/><span class="common-icons"><i class="material-icons">search</i></span> </div>
+
+</div>
+</div>
+<div class="six columns">
+
+<div class="row">
+<label class="seven columns">Outlet Name</label>
+<div class="three columns"><input type="text" name="outletName" [(ngModel)]="uniOdrData.outletName" #outletName="ngModel"/> </div>
+
+</div>
+<div class="row">
+<label class="seven columns">Address</label>
+<div class="three columns"><input type="text" name="address" [(ngModel)]="uniOdrData.address" #address="ngModel"/> </div>
+
+</div>
+<div class="row">
+<label class="seven columns">Order Status</label>
+<div class="three columns"><ng2-completer name="orderStatus" [(ngModel)]="uniOdrData.orderStatus" [datasource]="uniOdrStatusSrv" [minSearchLength]="0" (Selected)= "onSelectCaptureFieldValue($event)"></ng2-completer> </div>
+
+</div>
+</div>
+ 
+</div>
+</div>
+
+<div class="container"><hr/></div>
+<div class="container"><div class="row">
+<div class="seven columns">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<div class="four columns">
+<div class="row">
+<div class="six columns">
+<button type="button">Clear</button>
+</div>
+<div class="four columns">
+<button type="button" style="background-color: #185597; color:#fff;" (click)="searchUniversalDetails($event)">Search</button>
+</div>
+</div>
+</div>
+
+</div></div>
+</div>
